@@ -1,0 +1,3314 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenangan Kelas XII-2</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-cream: #EEEBE6;
+            --text-dark: #1a1a1a;
+            --accent-mint: #A8D5BA;
+            --accent-soft: #D4C5B0;
+            --white: #FFFFFF;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Sparkle Particles Effect */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            animation: float-up linear infinite;
+        }
+
+        .particle-star {
+            color: var(--accent-mint);
+            font-size: 1.2em;
+        }
+
+        .particle-circle {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-mint);
+            border-radius: 50%;
+        }
+
+        .particle-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--accent-soft);
+            border-radius: 50%;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(-100vh) translateX(var(--drift)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Variasi kecepatan dan ukuran */
+        .particle:nth-child(odd) {
+            animation-duration: 20s;
+        }
+
+        .particle:nth-child(even) {
+            animation-duration: 25s;
+        }
+
+        .particle:nth-child(3n) {
+            animation-duration: 22s;
+        }
+
+        .particle:nth-child(4n) {
+            animation-duration: 28s;
+        }
+
+        .particle:nth-child(5n) {
+            animation-duration: 24s;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(238, 235, 230, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-mint);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        /* Navbar Links Styling */
+        .nav-links button {
+            background: transparent;
+            border: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+        }
+
+        .nav-links button::after {
+            display: none;
+        }
+
+        .nav-links button:hover {
+            background-color: rgba(168, 213, 186, 0.25);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+        }
+
+        .nav-links button.active {
+            background-color: var(--accent-mint);
+            color: var(--text-dark);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(168, 213, 186, 0.4);
+        }
+
+        .nav-music-wrap {
+            margin-left: 0.25rem;
+        }
+
+        .nav-music-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0.5rem 0.6rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            line-height: 1;
+        }
+
+        .nav-music-btn:hover {
+            background-color: rgba(168, 213, 186, 0.25);
+            transform: scale(1.1);
+        }
+
+        .nav-music-btn.playing {
+            animation: pulse-music 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-music {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Hamburger menu - hidden on desktop */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .main-nav.open .nav-toggle span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .main-nav.open .nav-toggle span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .main-nav.open .nav-toggle span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Page Sections - Hide/Show */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Page Transition Overlay */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-cream);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .page-transition.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Star Burst Animation Container */
+        .star-burst-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .transition-star {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--accent-mint);
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0) rotate(0deg);
+        }
+
+        .page-transition.active .transition-star {
+            animation: starBurst 0.8s ease-out forwards;
+        }
+
+        @keyframes starBurst {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0) rotate(0deg);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(720deg);
+            }
+        }
+
+        /* Central Loading Star */
+        .central-star {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: var(--accent-mint);
+            animation: centralPulse 0.8s ease-in-out infinite;
+        }
+
+        @keyframes centralPulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.3) rotate(180deg);
+                opacity: 0.6;
+            }
+        }
+
+        /* Sparkle Trail Effect */
+        .sparkle-trail {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-mint);
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .page-transition.active .sparkle-trail {
+            animation: sparkleTrail 0.8s ease-out forwards;
+        }
+
+        @keyframes sparkleTrail {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0.5);
+            }
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border: 3px solid var(--accent-mint);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+        }
+
+        .page-transition.active .ripple {
+            animation: rippleEffect 1s ease-out forwards;
+        }
+
+        @keyframes rippleEffect {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+
+            100% {
+                width: 600px;
+                height: 600px;
+                opacity: 0;
+            }
+        }
+
+        /* Page Slide Animations */
+        .page-section.slide-out-left {
+            animation: slideOutLeft 0.4s ease-out forwards;
+        }
+
+        .page-section.slide-out-right {
+            animation: slideOutRight 0.4s ease-out forwards;
+        }
+
+        .page-section.slide-in-left {
+            animation: slideInLeft 0.4s ease-out forwards;
+        }
+
+        .page-section.slide-in-right {
+            animation: slideInRight 0.4s ease-out forwards;
+        }
+
+        @keyframes slideOutLeft {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* HOME PAGE */
+        .hero {
+            margin-top: 80px;
+            padding: 5rem 3rem 4rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            min-height: 85vh;
+            position: relative;
+        }
+
+        .deco-star {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.6;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        .star-1 {
+            top: 10%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .star-2 {
+            top: 20%;
+            right: 20%;
+            animation-delay: 1s;
+        }
+
+        .star-3 {
+            bottom: 30%;
+            left: 10%;
+            animation-delay: 2s;
+            font-size: 2rem;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: rotate(180deg) scale(1.2);
+            }
+        }
+
+        .deco-curve {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 3px solid var(--accent-mint);
+            border-radius: 50% 50% 0 50%;
+            opacity: 0.3;
+            top: 15%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .highlight {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-weight: 400;
+            display: block;
+            color: #555;
+        }
+
+        /* Typing Animation */
+        .typing-wrapper {
+            display: block;
+            min-height: 5.5rem;
+        }
+
+        .typing-text {
+            display: inline;
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        .typing-text::after {
+            content: '|';
+            display: inline-block;
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
+            font-weight: 400;
+            font-size: 5rem;
+        }
+
+        @keyframes blink {
+
+            0%,
+            49% {
+                opacity: 1;
+            }
+
+            50%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Smooth text reveal */
+        .typing-text {
+            opacity: 1;
+            transition: opacity 0.1s ease;
+        }
+
+        /* Style untuk kata yang di-highlight (italic) */
+        .typing-text .word-highlight {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #555;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--accent-mint);
+            color: var(--text-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: #95c9a8;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(168, 213, 186, 0.3);
+        }
+
+        .btn-secondary {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .play-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover .play-icon {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hand-illustration {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1;
+        }
+
+        .hand-bg {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            background: radial-gradient(circle, var(--accent-mint) 0%, transparent 70%);
+            opacity: 0.2;
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.3;
+            }
+        }
+
+        .hand-main {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18rem;
+            filter: grayscale(100%);
+            opacity: 0.9;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .float-item {
+            position: absolute;
+            background: var(--accent-mint);
+            border-radius: 50%;
+            animation: floatAround 10s ease-in-out infinite;
+        }
+
+        .float-item:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 10%;
+            right: 15%;
+            animation-delay: 0s;
+        }
+
+        .float-item:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 2s;
+        }
+
+        .float-item:nth-child(3) {
+            width: 50px;
+            height: 50px;
+            top: 50%;
+            right: 5%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatAround {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(10px, -15px) rotate(90deg);
+            }
+
+            50% {
+                transform: translate(0, -30px) rotate(180deg);
+            }
+
+            75% {
+                transform: translate(-10px, -15px) rotate(270deg);
+            }
+        }
+
+        /* Home Info Cards */
+        .home-info {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 3rem 4rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-mint), var(--accent-soft));
+            z-index: 2;
+        }
+
+        /* Lapisan hitam dari kiri (sama seperti stat-box) */
+        .info-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 25px 0 0 25px;
+            transition: width 0.4s ease;
+            z-index: 0;
+        }
+
+        .info-card:hover::after,
+        .info-card:active::after {
+            width: 100%;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .info-icon {
+            position: relative;
+            z-index: 1;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            transition: filter 0.35s ease;
+        }
+
+        .info-card:hover .info-icon,
+        .info-card:active .info-icon {
+            filter: brightness(0) invert(1);
+        }
+
+        .info-card h3 {
+            position: relative;
+            z-index: 1;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            transition: color 0.35s ease;
+        }
+
+        .info-card p {
+            position: relative;
+            z-index: 1;
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+            transition: color 0.35s ease;
+        }
+
+        .info-card:hover h3,
+        .info-card:hover p,
+        .info-card:active h3,
+        .info-card:active p {
+            color: #fff;
+        }
+
+        /* ABOUT CLASS PAGE */
+        .about-section {
+            margin-top: 120px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 4rem 3rem;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .about-header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .about-header h1 .italic-text {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #555;
+        }
+
+        .about-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 5rem;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-box {
+            position: relative;
+            overflow: hidden;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        /* Lapisan hitam masuk dari kiri */
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 18px 0 0 18px;
+            transition: width 0.4s ease;
+            z-index: 0;
+        }
+
+        .stat-box:hover::before,
+        .stat-box:active::before {
+            width: 100%;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-box:active::before {
+            background: rgba(0, 0, 0, 0.95);
+        }
+
+        .stat-number {
+            position: relative;
+            z-index: 1;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.35s ease;
+        }
+
+        .stat-label {
+            position: relative;
+            z-index: 1;
+            font-size: 1rem;
+            color: #666;
+            font-weight: 600;
+            transition: color 0.35s ease;
+        }
+
+        .stat-box:hover .stat-number,
+        .stat-box:hover .stat-label,
+        .stat-box:active .stat-number,
+        .stat-box:active .stat-label {
+            color: #fff;
+        }
+
+        .teacher-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 120px;
+        }
+
+        .teacher-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent-mint), var(--accent-soft));
+            border-radius: 30px 30px 0 0;
+        }
+
+        .teacher-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #E8F5E9 0%, var(--accent-mint) 100%);
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+        }
+
+        .teacher-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .teacher-title {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .teacher-quote {
+            font-style: italic;
+            color: #555;
+            line-height: 1.8;
+            padding: 1.8rem;
+            background: rgba(168, 213, 186, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-mint);
+        }
+
+        /* MEMBER PAGE */
+        .member-section {
+            margin-top: 120px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 4rem 3rem;
+        }
+
+        .member-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .member-header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .member-header h1 .italic-text {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #555;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .member-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(168, 213, 186, 0.15) 0%, rgba(212, 197, 176, 0.15) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .member-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--accent-mint), var(--accent-soft));
+            border-radius: 20px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.4s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(168, 213, 186, 0.35),
+                0 15px 30px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(168, 213, 186, 0.3);
+        }
+
+        .member-card:hover::before {
+            opacity: 1;
+        }
+
+        .member-card:hover::after {
+            opacity: 0.6;
+        }
+
+        .member-avatar {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--accent-soft) 0%, var(--accent-mint) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .member-card:hover .member-avatar {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .member-card:hover .member-info {
+            transform: translateY(-5px);
+        }
+
+        .member-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .member-card:hover .member-name {
+            color: #2d5f3f;
+            font-weight: 700;
+        }
+
+        .member-role {
+            font-size: 0.9rem;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .member-card:hover .member-role {
+            color: var(--text-dark);
+        }
+
+        /* GALLERY PAGE */
+        .gallery-section {
+            margin-top: 120px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 4rem 3rem;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-header h1 .italic-text {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #555;
+        }
+
+        .gallery-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .photo-item {
+            background: var(--white);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .photo-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 4/3;
+        }
+
+        .photo-item:nth-child(1) img {
+            aspect-ratio: 16/9;
+        }
+
+        .photo-caption {
+            padding: 1.8rem;
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* VIDEO PAGE */
+        .video-section {
+            margin-top: 120px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 4rem 3rem;
+        }
+
+        .video-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .video-header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .video-header h1 .italic-text {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #555;
+        }
+
+        .video-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-item {
+            background: var(--white);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+        }
+
+        .video-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .video-item .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #1a1a1a;
+        }
+
+        .video-item .video-wrapper video,
+        .video-item .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-caption {
+            padding: 1.8rem;
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* DRAWING PAGE */
+        .drawing-section {
+            margin-top: 120px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem 3rem 4rem;
+        }
+
+        .drawing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .drawing-header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .drawing-header h1 .italic-text {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #555;
+        }
+
+        .drawing-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .drawing-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .drawing-toolbar label,
+        .drawing-toolbar .drawing-toolbar-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+            margin-right: 0.25rem;
+        }
+
+        .drawing-colors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .color-swatch {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-swatch.active {
+            border-color: var(--text-dark);
+            box-shadow: 0 0 0 3px var(--accent-mint);
+        }
+
+        .drawing-size-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .drawing-size-wrap input[type="range"] {
+            width: 100px;
+            accent-color: var(--accent-mint);
+        }
+
+        .drawing-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            background: var(--accent-mint);
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+        }
+
+        .drawing-btn:hover {
+            background: #95c9a8;
+            transform: translateY(-2px);
+        }
+
+        .drawing-btn.secondary {
+            background: #eee;
+            color: #555;
+        }
+
+        .drawing-btn.secondary:hover {
+            background: #ddd;
+        }
+
+        .drawing-stickers {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .drawing-stickers .drawing-toolbar-label {
+            margin-right: 0.5rem;
+        }
+
+        .sticker-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            background: var(--white);
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .sticker-btn:hover {
+            border-color: var(--accent-mint);
+            transform: scale(1.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sticker-btn.active {
+            border-color: var(--accent-mint);
+            background: rgba(168, 213, 186, 0.3);
+            box-shadow: 0 0 0 2px var(--accent-mint);
+        }
+
+        .drawing-btn.mode-btn.active {
+            background: var(--accent-mint);
+            color: var(--text-dark);
+        }
+
+        .drawing-canvas-wrap {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        #drawCanvas {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: 500px;
+            border-radius: 12px;
+            cursor: crosshair;
+            background: #fff;
+            touch-action: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 4rem 3rem 3rem;
+            text-align: center;
+            margin-top: 6rem;
+        }
+
+        footer h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            font-size: 1rem;
+            color: #aaa;
+        }
+
+        /* Flowing Ribbon Stroke Animation */
+        .ribbon-divider {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            margin: 4rem 0;
+            overflow: hidden;
+        }
+
+        .ribbon-divider svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ribbon-stroke {
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .ribbon-mint {
+            stroke: var(--accent-mint);
+            stroke-width: 8;
+        }
+
+        .ribbon-black {
+            stroke: var(--text-dark);
+            stroke-width: 6;
+        }
+
+        /* Drawing Animation */
+        @keyframes draw-ribbon {
+            0% {
+                stroke-dashoffset: 2000;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                stroke-dashoffset: 0;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-out {
+            0% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .ribbon-stroke {
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+            animation: draw-ribbon 4s ease-in-out infinite, fade-out 4s ease-in-out infinite;
+        }
+
+        .ribbon-stroke.delay-1 {
+            animation-delay: 0.3s;
+        }
+
+        /* Responsive - Tablet */
+        @media (max-width: 1024px) {
+            nav .container {
+                padding: 1rem 2rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 4rem 2rem 3rem;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .typing-text,
+            .typing-text::after {
+                font-size: 3.5rem !important;
+            }
+
+            .typing-wrapper {
+                min-height: 4rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .home-info {
+                padding: 0 2rem 4rem;
+                margin: 3rem auto;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .info-card {
+                padding: 2.5rem 2rem;
+            }
+
+            .about-section {
+                padding: 3rem 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .teacher-card {
+                position: static;
+                padding: 2.5rem 2rem;
+            }
+
+            .about-header h1,
+            .member-header h1,
+            .gallery-header h1,
+            .video-header h1 {
+                font-size: 3rem;
+            }
+
+            .member-section,
+            .gallery-section,
+            .video-section {
+                padding: 3rem 2rem;
+            }
+
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            footer {
+                padding: 3rem 2rem 2rem;
+            }
+
+            .ribbon-divider {
+                height: 80px;
+                margin: 3rem 0;
+            }
+
+            .drawing-section {
+                padding: 2rem 2rem 3rem;
+            }
+
+            .drawing-header h1 {
+                font-size: 3rem;
+            }
+
+            #drawCanvas {
+                height: 400px;
+            }
+        }
+
+        /* Responsive - Mobile */
+        @media (max-width: 768px) {
+            nav .container {
+                padding: 1rem 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                order: 3;
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0;
+                border-top: 1px solid rgba(0, 0, 0, 0.08);
+                margin-top: 0.5rem;
+            }
+
+            .main-nav.open .nav-links {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-music-wrap {
+                display: flex;
+                justify-content: flex-end;
+                margin-left: 0;
+                padding: 0.5rem 0;
+                border-top: 1px solid rgba(0, 0, 0, 0.06);
+            }
+
+            .nav-music-btn {
+                padding: 0.6rem 0.8rem;
+                font-size: 1.5rem;
+            }
+
+            .nav-links button.nav-btn {
+                width: 100%;
+                text-align: center;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem 2.5rem;
+                margin-top: 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .typing-text,
+            .typing-text::after {
+                font-size: 2.5rem !important;
+            }
+
+            .typing-wrapper {
+                min-height: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .play-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 0.9rem;
+            }
+
+            .home-info {
+                padding: 0 1.5rem 3rem;
+                margin: 2rem auto;
+            }
+
+            .info-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .info-icon {
+                font-size: 2.5rem;
+            }
+
+            .info-card h3 {
+                font-size: 1.25rem;
+            }
+
+            .about-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .about-header h1,
+            .member-header h1,
+            .gallery-header h1,
+            .video-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-text h2 {
+                font-size: 1.5rem;
+            }
+
+            .teacher-name {
+                font-size: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .member-section,
+            .gallery-section,
+            .video-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .member-avatar {
+                font-size: 3rem;
+            }
+
+            .member-info {
+                padding: 1rem;
+            }
+
+            .member-name {
+                font-size: 1rem;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .photo-item:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .photo-item:nth-child(1) img {
+                aspect-ratio: 4/3;
+            }
+
+            .photo-caption {
+                padding: 1.25rem;
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 2rem 1.5rem 1.5rem;
+                margin-top: 4rem;
+            }
+
+            footer h3 {
+                font-size: 1.5rem;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+
+            .deco-star {
+                font-size: 2rem;
+            }
+
+            .hand-illustration {
+                font-size: 4rem;
+            }
+
+            .ribbon-divider {
+                height: 60px;
+                margin: 2rem 0;
+            }
+
+            .drawing-section {
+                padding: 1.5rem 1.5rem 2rem;
+                margin-top: 80px;
+            }
+
+            .drawing-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .drawing-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 1rem;
+            }
+
+            .drawing-colors {
+                justify-content: center;
+            }
+
+            .color-swatch {
+                width: 28px;
+                height: 28px;
+            }
+
+            .drawing-stickers {
+                justify-content: center;
+            }
+
+            .sticker-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 1.1rem;
+            }
+
+            #drawCanvas {
+                height: 350px;
+            }
+        }
+
+        /* Responsive - Small mobile */
+        @media (max-width: 480px) {
+            nav .container {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .logo-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .typing-text,
+            .typing-text::after {
+                font-size: 2rem !important;
+            }
+
+            .typing-wrapper {
+                min-height: 2.5rem;
+            }
+
+            .home-info {
+                padding: 0 1rem 2rem;
+                margin: 1.5rem auto;
+            }
+
+            .info-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .info-icon {
+                font-size: 2rem;
+            }
+
+            .about-section,
+            .member-section,
+            .gallery-section,
+            .video-section {
+                padding: 1.5rem 1rem;
+            }
+
+            .about-header h1,
+            .member-header h1,
+            .gallery-header h1,
+            .video-header h1 {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stat-box {
+                padding: 1.5rem 1rem;
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .member-avatar {
+                font-size: 2.5rem;
+            }
+
+            .member-name {
+                font-size: 0.95rem;
+            }
+
+            .member-role {
+                font-size: 0.85rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
+            }
+
+            footer h3 {
+                font-size: 1.25rem;
+            }
+
+            .teacher-name {
+                font-size: 1.25rem;
+            }
+
+            .drawing-section {
+                padding: 1rem;
+            }
+
+            .drawing-header h1 {
+                font-size: 2rem;
+            }
+
+            #drawCanvas {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-container"></div>
+
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo" onclick="showPage('home')">
+                <div class="logo-icon">12</div>
+                <span>Kelas XII-2</span>
+            </div>
+            <button type="button" class="nav-toggle" aria-label="Buka menu" onclick="toggleNav()">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><button class="nav-btn active" onclick="showPage('home')">Home</button></li>
+                <li><button class="nav-btn" onclick="showPage('about')">Tentang kelas</button></li>
+                <li><button class="nav-btn" onclick="showPage('members')">Member XII-2</button></li>
+                <li><button class="nav-btn" onclick="showPage('gallery')">Galeri Foto</button></li>
+                <li><button class="nav-btn" onclick="showPage('video')">Video</button></li>
+                <li><button class="nav-btn" onclick="showPage('drawing')">Drawing</button></li>
+                <li class="nav-music-wrap"><button type="button" class="nav-music-btn" id="musicToggle"
+                        aria-label="Putar/Jeda musik" onclick="toggleMusic()" title="Musik">🎵</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="page-transition" id="pageTransition">
+        <div class="star-burst-container">
+            <div class="central-star">✦</div>
+
+            <div class="ripple" style="animation-delay: 0s;"></div>
+            <div class="ripple" style="animation-delay: 0.15s;"></div>
+            <div class="ripple" style="animation-delay: 0.3s;"></div>
+
+            <div class="transition-star" style="--tx: 0px; --ty: -150px; animation-delay: 0s;">✦</div>
+            <div class="transition-star" style="--tx: 106px; --ty: -106px; animation-delay: 0.05s;">✦</div>
+            <div class="transition-star" style="--tx: 150px; --ty: 0px; animation-delay: 0.1s;">✦</div>
+            <div class="transition-star" style="--tx: 106px; --ty: 106px; animation-delay: 0.15s;">✦</div>
+            <div class="transition-star" style="--tx: 0px; --ty: 150px; animation-delay: 0.2s;">✦</div>
+            <div class="transition-star" style="--tx: -106px; --ty: 106px; animation-delay: 0.25s;">✦</div>
+            <div class="transition-star" style="--tx: -150px; --ty: 0px; animation-delay: 0.3s;">✦</div>
+            <div class="transition-star" style="--tx: -106px; --ty: -106px; animation-delay: 0.35s;">✦</div>
+
+            <div class="sparkle-trail" style="--tx: 50px; --ty: -200px; animation-delay: 0.1s;"></div>
+            <div class="sparkle-trail" style="--tx: 200px; --ty: -50px; animation-delay: 0.15s;"></div>
+            <div class="sparkle-trail" style="--tx: 200px; --ty: 50px; animation-delay: 0.2s;"></div>
+            <div class="sparkle-trail" style="--tx: 50px; --ty: 200px; animation-delay: 0.25s;"></div>
+            <div class="sparkle-trail" style="--tx: -50px; --ty: 200px; animation-delay: 0.3s;"></div>
+            <div class="sparkle-trail" style="--tx: -200px; --ty: 50px; animation-delay: 0.35s;"></div>
+            <div class="sparkle-trail" style="--tx: -200px; --ty: -50px; animation-delay: 0.4s;"></div>
+            <div class="sparkle-trail" style="--tx: -50px; --ty: -200px; animation-delay: 0.45s;"></div>
+
+            <div class="transition-star" style="--tx: 75px; --ty: -180px; animation-delay: 0.08s; font-size: 1.5rem;">✦
+            </div>
+            <div class="transition-star" style="--tx: 180px; --ty: -75px; animation-delay: 0.13s; font-size: 1.5rem;">✦
+            </div>
+            <div class="transition-star" style="--tx: 180px; --ty: 75px; animation-delay: 0.18s; font-size: 1.5rem;">✦
+            </div>
+            <div class="transition-star" style="--tx: 75px; --ty: 180px; animation-delay: 0.23s; font-size: 1.5rem;">✦
+            </div>
+            <div class="transition-star" style="--tx: -75px; --ty: 180px; animation-delay: 0.28s; font-size: 1.5rem;">✦
+            </div>
+            <div class="transition-star" style="--tx: -180px; --ty: 75px; animation-delay: 0.33s; font-size: 1.5rem;">✦
+            </div>
+            <div class="transition-star" style="--tx: -180px; --ty: -75px; animation-delay: 0.38s; font-size: 1.5rem;">✦
+            </div>
+            <div class="transition-star" style="--tx: -75px; --ty: -180px; animation-delay: 0.43s; font-size: 1.5rem;">✦
+            </div>
+        </div>
+    </div>
+
+    <div id="home" class="page-section active">
+        <section class="hero">
+            <div class="deco-star star-1">✦</div>
+            <div class="deco-star star-2">✦</div>
+            <div class="deco-curve"></div>
+
+            <div class="hero-content">
+                <div class="hero-subtitle">Kelas XII-2 • Exiittwo.Zone</div>
+                <h1>
+                    <span class="typing-wrapper">
+                        <span id="typingText" class="typing-text"></span>
+                    </span>
+                </h1>
+                <p class="hero-description">
+                    Belajar, tumbuh, dan menciptakan kenangan yang tak terlupakan bersama keluarga besar XII-2. Setiap
+                    momen adalah bagian dari perjalanan kami.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="showPage('about')">Jelajahi Kelas</button>
+                    <button class="btn-secondary" onclick="showPage('gallery')">
+                        <div class="play-icon">▶</div>
+                        <span>Lihat Galeri</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hand-illustration">
+                    <div class="hand-bg"></div>
+                    <div class="hand-main">✌️</div>
+                    <div class="floating-elements">
+                        <div class="float-item"></div>
+                        <div class="float-item"></div>
+                        <div class="float-item"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flowing Ribbon Divider -->
+        <div class="ribbon-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <!-- Mint Bold Ribbon -->
+                <path class="ribbon-stroke ribbon-mint" d="M0,60 Q150,20 300,50 T600,60 Q750,40 900,70 T1200,50" />
+
+                <!-- Black Ribbon -->
+                <path class="ribbon-stroke ribbon-black delay-1"
+                    d="M0,70 Q150,90 300,60 T600,70 Q750,50 900,80 T1200,60" />
+            </svg>
+        </div>
+
+        <section class="home-info">
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-icon">🎓</span>
+                    <h3>Prestasi Akademik</h3>
+                    <p>Kelas dengan nilai rata-rata tertinggi dan prestasi gemilang di berbagai kompetisi akademik
+                        tingkat sekolah dan nasional.</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">🤝</span>
+                    <h3>Solidaritas Kuat</h3>
+                    <p>Kebersamaan dan kekompakan adalah kunci kesuksesan kami. Tidak ada yang tertinggal, semua maju
+                        bersama.</p>
+                </div>
+                <div class="info-card">
+                    <span class="info-icon">🌟</span>
+                    <h3>Bakat & Kreativitas</h3>
+                    <p>Dari seni, olahraga, hingga teknologi - siswa kami memiliki beragam bakat yang terus diasah dan
+                        dikembangkan.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="about" class="page-section">
+        <!-- Flowing Ribbon Divider -->
+        <div class="ribbon-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <!-- Mint Bold Ribbon -->
+                <path class="ribbon-stroke ribbon-mint" d="M0,50 Q200,80 400,50 T800,60 Q1000,30 1200,60" />
+
+                <!-- Black Ribbon -->
+                <path class="ribbon-stroke ribbon-black delay-1" d="M0,65 Q200,35 400,65 T800,50 Q1000,75 1200,45" />
+            </svg>
+        </div>
+
+        <section class="about-section">
+            <div class="about-header">
+                <h1>Tentang <span class="italic-text">Kelas</span> Kami</h1>
+                <p>Keluarga besar XII-2 yang penuh dengan cerita, perjuangan, dan prestasi</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Perjalanan Kami</h2>
+                    <p>
+                        Kelas XII-2 adalah keluarga kedua kami, tempat di mana kami tumbuh, belajar,
+                        dan menciptakan kenangan yang tak akan pernah terlupakan. Bersama-sama, kami
+                        telah melewati suka dan duka, ujian dan tantangan, serta merayakan setiap
+                        pencapaian dengan penuh kebanggaan.
+                    </p>
+                    <p>
+                        Dari diskusi kelas yang menarik hingga acara-acara seru, setiap momen adalah
+                        bagian dari perjalanan kami menuju masa depan yang lebih cerah. Kami adalah
+                        tim yang solid, keluarga yang saling mendukung, dan teman selamanya.
+                    </p>
+                    <p>
+                        Dengan bimbingan wali kelas yang luar biasa dan semangat juang yang tinggi,
+                        kami terus berinovasi dan berkembang. XII-2 bukan hanya sebuah kelas, tapi
+                        sebuah keluarga yang akan selalu terhubung hingga masa depan.
+                    </p>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <span class="stat-number">35</span>
+                            <span class="stat-label">Total Siswa</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Tahun Bersama</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">Kenangan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="teacher-card">
+                    <img src="bu alfi.jpeg" alt="Wali Kelas XII-2" class="teacher-image">
+                    <h3 class="teacher-name">Rochayah Alfi Rahmani S.Ag M.pd</h3>
+                    <p class="teacher-title">Wali Kelas XII-2</p>
+                    <div class="teacher-quote">
+                        "Kalian adalah generasi yang luar biasa. Teruslah bermimpi, bekerja keras,
+                        dan jadilah yang terbaik. Masa depan ada di tangan kalian. Ibu bangga
+                        menjadi bagian dari perjalanan kalian."
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="members" class="page-section">
+        <!-- Flowing Ribbon Divider -->
+        <div class="ribbon-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <!-- Mint Bold Ribbon -->
+                <path class="ribbon-stroke ribbon-mint" d="M0,55 Q180,25 360,55 T720,60 Q900,35 1080,65 T1200,55" />
+
+                <!-- Black Ribbon -->
+                <path class="ribbon-stroke ribbon-black delay-1"
+                    d="M0,68 Q180,90 360,68 T720,70 Q900,45 1080,75 T1200,68" />
+            </svg>
+        </div>
+
+        <section class="member-section">
+            <div class="member-header">
+                <h1>Member <span class="italic-text">XII-2</span></h1>
+
+            </div>
+            <div class="members-grid">
+                <div class="member-card">
+                    <img src="paulus.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Paulus Bermazmur</div>
+                        <div class="member-role">Ketua Kelas</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="affan.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Affan Ghaffar</div>
+                        <div class="member-role">Wakil Kelas</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="rafi.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Rafi Naufal Widaniq</div>
+                        <div class="member-role">Sekretaris 1</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="syalum.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Syalum Putri Andini</div>
+                        <div class="member-role">Sekretaris 2</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="shumaya.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Shumaya Salsabila Mauludin</div>
+                        <div class="member-role">Bendahara 1</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="keisya.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Keisya Anggita Ginting</div>
+                        <div class="member-role">Bendahara 2</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="fikri.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Ahmad Fikri Kesuma</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="aldo.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Aldho Sihotang</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="aris.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Aris Wicaksono</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="ayu.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Ayu Kristina Napitupulu</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="bintang.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Bintang Satya Asmara</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="crespo.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Crespo Stevanus Napitupulu</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="devlin.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Devlin Muzhaffar</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="dimas.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Dimas Satrio Nugroho</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="genta.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Genta Kurnia Putra</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="gazy.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Ghazy Sabyllah Anam</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="jane.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Jane Margareth</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="jasmin.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Jasmin Umaera</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="kezia.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Kezia Cintia Lestari</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="mirza.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Mirza Zebadhia</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="yusuf.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Muhammad Yusuf Raffly</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="nabil.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Nabil Kadhafi</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="nazma.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Najma Aliya Zahirah</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="nur.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Nur Alif Al-Farizi</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="oliv.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Olivia Maharani</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="radit.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Radithia Muhammad Yanuar</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="randhu.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Randhu Hutama Syachlin</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="rinda.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Rinda Raya Ramtono</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="untung.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Untung Niko Andrian</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="vicki.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Vicki Ardiansyah Pratama</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="vicky.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Vicky Laurent Andreas Pardede</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="william.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">William Cahyadi Santosa</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="zahra.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Zahra Zalianti</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <img src="zakya.jpeg" class="member-avatar">
+                    <div class="member-info">
+                        <div class="member-name">Zakya Intan Azalia</div>
+                        <div class="member-role">Anggota</div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+    </section>
+    </div>
+
+    <div id="gallery" class="page-section">
+        <!-- Flowing Ribbon Divider -->
+        <div class="ribbon-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <!-- Mint Bold Ribbon -->
+                <path class="ribbon-stroke ribbon-mint" d="M0,60 Q160,30 320,58 T640,55 Q800,75 960,50 T1200,62" />
+
+                <!-- Black Ribbon -->
+                <path class="ribbon-stroke ribbon-black delay-1"
+                    d="M0,70 Q160,85 320,68 T640,72 Q800,48 960,75 T1200,58" />
+            </svg>
+        </div>
+
+        <section class="gallery-section">
+            <div class="gallery-header">
+                <h1>Galeri <span class="italic-text">Foto</span></h1>
+                <p>Momen-momen berharga yang telah kita lalui bersama</p>
+            </div>
+
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="fotokelas.jpeg" alt="Foto Kelas XII-2">
+                    <div class="photo-caption">Keluarga besar XII-2 yang solid dan kompak</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto1.jpeg" alt="Kegiatan Belajar">
+                    <div class="photo-caption">Diskusi kelompok yang seru</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto2.jpeg" alt="Perayaan Kelas">
+                    <div class="photo-caption">Merayakan kesuksesan bersama</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto3.jpg" alt="Prestasi Kelas">
+                    <div class="photo-caption">Kompetisi dan pencapaian</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto4.jpg" alt="Pentas Seni">
+                    <div class="photo-caption">Pentas seni dan kreativitas</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto5.jpg" alt="Kegiatan Olahraga">
+                    <div class="photo-caption">Class meeting yang seru</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto6.jpg" alt="Study Tour">
+                    <div class="photo-caption">Perjalanan edukatif</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto7.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto8.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto15.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto17.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto16.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto9.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto10.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto11.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto12.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto13.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto14.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto18.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto19.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto20.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto21.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto22.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+                <div class="photo-item">
+                    <img src="foto23.jpg" alt="Hangout Bareng">
+                    <div class="photo-caption">Kumpul di luar sekolah</div>
+                </div>
+
+        </section>
+    </div>
+
+    <div id="video" class="page-section">
+        <div class="ribbon-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path class="ribbon-stroke ribbon-mint" d="M0,60 Q160,30 320,58 T640,55 Q800,75 960,50 T1200,62" />
+                <path class="ribbon-stroke ribbon-black delay-1"
+                    d="M0,70 Q160,85 320,68 T640,72 Q800,48 960,75 T1200,58" />
+            </svg>
+        </div>
+        <section class="video-section">
+            <div class="video-header">
+                <h1>END OF <span class="italic-text">XII</span></h1>
+                <p>AKhir dari kelas XII Angkatan 8</p>
+            </div>
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="video1.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung pemutaran video.
+                        </video>
+                    </div>
+                    <div class="video-caption">Video kenangan XII-2 (1)</div>
+                </div>
+                <div class="video-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="video2.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung pemutaran video.
+                        </video>
+                    </div>
+                    <div class="video-caption">Video kenangan XII-2 (2)</div>
+                </div>
+                <div class="video-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="video3.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung pemutaran video.
+                        </video>
+                    </div>
+                    <div class="video-caption">Video kenangan XII-2 (3)</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="drawing" class="page-section">
+        <div class="ribbon-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path class="ribbon-stroke ribbon-mint" d="M0,60 Q160,30 320,58 T640,55 Q800,75 960,50 T1200,62" />
+                <path class="ribbon-stroke ribbon-black delay-1"
+                    d="M0,70 Q160,85 320,68 T640,72 Q800,48 960,75 T1200,58" />
+            </svg>
+        </div>
+        <section class="drawing-section">
+            <div class="drawing-header">
+                <h1><span class="italic-text">Drawing</span></h1>
+                <p>Gambar dan tulis yang kamu rasakan hari ini</p>
+            </div>
+            <div class="drawing-toolbar">
+                <span class="drawing-toolbar-label">Warna:</span>
+                <div class="drawing-colors" id="colorPalette">
+                    <button type="button" class="color-swatch active" data-color="#1a1a1a" style="background:#1a1a1a"
+                        title="Hitam"></button>
+                    <button type="button" class="color-swatch" data-color="#ffffff"
+                        style="background:#fff; border:1px solid #ddd" title="Putih"></button>
+                    <button type="button" class="color-swatch" data-color="#e74c3c" style="background:#e74c3c"
+                        title="Merah"></button>
+                    <button type="button" class="color-swatch" data-color="#3498db" style="background:#3498db"
+                        title="Biru"></button>
+                    <button type="button" class="color-swatch" data-color="#2ecc71" style="background:#2ecc71"
+                        title="Hijau"></button>
+                    <button type="button" class="color-swatch" data-color="#f1c40f" style="background:#f1c40f"
+                        title="Kuning"></button>
+                    <button type="button" class="color-swatch" data-color="#9b59b6" style="background:#9b59b6"
+                        title="Ungu"></button>
+                    <button type="button" class="color-swatch" data-color="#e67e22" style="background:#e67e22"
+                        title="Oranye"></button>
+                    <button type="button" class="color-swatch" data-color="#A8D5BA" style="background:#A8D5BA"
+                        title="Mint"></button>
+                    <button type="button" class="color-swatch" data-color="#D4C5B0" style="background:#D4C5B0"
+                        title="Soft"></button>
+                </div>
+                <div class="drawing-size-wrap">
+                    <label>Ukuran:</label>
+                    <input type="range" id="brushSize" min="2" max="30" value="4" title="Ketebalan garis">
+                    <span id="brushSizeValue">4</span>px
+                </div>
+                <div class="drawing-stickers">
+                    <span class="drawing-toolbar-label">Sticker:</span>
+                    <button type="button" class="drawing-btn mode-btn active" id="brushModeBtn"
+                        title="Mode gambar">✏️</button>
+                    <button type="button" class="sticker-btn" data-sticker="⭐" title="Bintang">⭐</button>
+                    <button type="button" class="sticker-btn" data-sticker="✓" title="Centang">✓</button>
+                    <button type="button" class="sticker-btn" data-sticker="✦" title="Bintang dekoratif">✦</button>
+                    <button type="button" class="sticker-btn" data-sticker="❤" title="Hati">❤</button>
+                    <button type="button" class="sticker-btn" data-sticker="→" title="Panah">→</button>
+                    <button type="button" class="sticker-btn" data-sticker="👍" title="Jempol">👍</button>
+                    <button type="button" class="sticker-btn" data-sticker="🎉" title="Party">🎉</button>
+                    <button type="button" class="sticker-btn" data-sticker="💡" title="Ide">💡</button>
+                    <button type="button" class="sticker-btn" data-sticker="🔥" title="Api">🔥</button>
+                    <button type="button" class="sticker-btn" data-sticker="✨" title="Sparkle">✨</button>
+                </div>
+                <button type="button" class="drawing-btn secondary" onclick="clearCanvas()">Hapus Canvas</button>
+            </div>
+            <div class="drawing-canvas-wrap">
+                <canvas id="drawCanvas" width="1100" height="500"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <!-- Flowing Ribbon Divider before Footer -->
+    <div class="ribbon-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <!-- Mint Bold Ribbon -->
+            <path class="ribbon-stroke ribbon-mint" d="M0,58 Q190,28 380,58 T760,52 Q950,72 1140,48 T1200,60" />
+
+            <!-- Black Ribbon -->
+            <path class="ribbon-stroke ribbon-black delay-1"
+                d="M0,72 Q190,92 380,72 T760,68 Q950,43 1140,78 T1200,65" />
+        </svg>
+    </div>
+
+    <footer>
+        <h3>Kelas XII-2</h3>
+        <p>SMAN 21 KOTA BEKASI</p>
+        <p>2021-2025</p>
+    </footer>
+
+    <script>
+        // Floating Particles Effect Generator
+        function createFloatingParticles() {
+            const particlesContainer = document.getElementById('particles-container');
+            const numberOfParticles = 30; // Jumlah sedang dan subtle
+
+            for (let i = 0; i < numberOfParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Random jenis particle (60% bintang kecil, 30% circle, 10% dot)
+                const rand = Math.random();
+                if (rand < 0.6) {
+                    particle.classList.add('particle-star');
+                    particle.innerHTML = '✦';
+                } else if (rand < 0.9) {
+                    particle.classList.add('particle-circle');
+                } else {
+                    particle.classList.add('particle-dot');
+                }
+
+                // Random posisi horizontal
+                particle.style.left = Math.random() * 100 + '%';
+
+                // Random posisi start dari bawah
+                particle.style.bottom = (Math.random() * 20 - 20) + '%';
+
+                // Random delay untuk efek stagger
+                particle.style.animationDelay = Math.random() * 10 + 's';
+
+                // Random horizontal drift
+                const drift = (Math.random() - 0.5) * 100;
+                particle.style.setProperty('--drift', drift + 'px');
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Inisialisasi particles saat page load
+        window.addEventListener('load', createFloatingParticles);
+
+        // Typing Animation dengan HTML styling
+        const typingText = document.getElementById('typingText');
+        const messages = [
+            { text: 'Welcome to ', highlight: 'XII-2', after: ' ✦' },
+            { text: 'Memories ', highlight: 'never', after: ' fade.' },
+        ];
+        let messageIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        let currentFullText = '';
+
+        function buildMessageText(msg) {
+            return msg.text + msg.highlight + msg.after;
+        }
+
+        function getStyledHTML(text, msg) {
+            // Cari posisi kata highlight
+            const highlightStart = msg.text.length;
+            const highlightEnd = highlightStart + msg.highlight.length;
+
+            let html = '';
+            for (let i = 0; i < text.length; i++) {
+                if (i >= highlightStart && i < highlightEnd) {
+                    if (i === highlightStart) {
+                        html += '<span class="word-highlight">';
+                    }
+                    html += text[i];
+                    if (i === highlightEnd - 1) {
+                        html += '</span>';
+                    }
+                } else {
+                    html += text[i];
+                }
+            }
+            return html;
+        }
+
+        function typeWriter() {
+            const currentMessage = messages[messageIndex];
+            currentFullText = buildMessageText(currentMessage);
+
+            if (!isDeleting) {
+                // Typing forward
+                const currentText = currentFullText.substring(0, charIndex);
+                typingText.innerHTML = getStyledHTML(currentText, currentMessage);
+                charIndex++;
+
+                if (charIndex > currentFullText.length) {
+                    // Pause at end before deleting
+                    isDeleting = true;
+                    typingSpeed = 2000; // Pause for 2 seconds
+                } else {
+                    typingSpeed = 100; // Normal typing speed
+                }
+            } else {
+                // Deleting backward
+                const currentText = currentFullText.substring(0, charIndex);
+                typingText.innerHTML = getStyledHTML(currentText, currentMessage);
+                charIndex--;
+                typingSpeed = 50; // Faster deletion
+
+                if (charIndex < 0) {
+                    // Move to next message
+                    isDeleting = false;
+                    messageIndex = (messageIndex + 1) % messages.length;
+                    charIndex = 0;
+                    typingSpeed = 500; // Pause before typing next message
+                }
+            }
+
+            setTimeout(typeWriter, typingSpeed);
+        }
+
+        // Start typing animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 500);
+        });
+
+        // Store current page
+        let currentPage = 'home';
+        const pageOrder = ['home', 'about', 'members', 'gallery', 'video', 'drawing'];
+
+        // Page Navigation System with Transition
+        function toggleNav() {
+            document.querySelector('.main-nav').classList.toggle('open');
+        }
+
+        function toggleMusic() {
+            const audio = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicToggle');
+            if (audio.paused) {
+                audio.volume = 0.4;
+                audio.play().then(() => {
+                    btn.textContent = '🎵';
+                    btn.classList.add('playing');
+                }).catch(() => { });
+            } else {
+                audio.pause();
+                btn.textContent = '🔇';
+                btn.classList.remove('playing');
+            }
+        }
+
+        document.getElementById('bgMusic').addEventListener('ended', function () {
+            document.getElementById('musicToggle').textContent = '🔇';
+            document.getElementById('musicToggle').classList.remove('playing');
+        });
+        document.getElementById('bgMusic').addEventListener('play', function () {
+            document.getElementById('musicToggle').textContent = '🎵';
+            document.getElementById('musicToggle').classList.add('playing');
+        });
+        document.getElementById('bgMusic').addEventListener('pause', function () {
+            document.getElementById('musicToggle').textContent = '🔇';
+            document.getElementById('musicToggle').classList.remove('playing');
+        });
+
+        function showPage(pageName) {
+            if (pageName === currentPage) return;
+            document.querySelector('.main-nav').classList.remove('open');
+
+            // Determine slide direction
+            const currentIndex = pageOrder.indexOf(currentPage);
+            const newIndex = pageOrder.indexOf(pageName);
+            const direction = newIndex > currentIndex ? 'right' : 'left';
+
+            // Show transition overlay
+            const transition = document.getElementById('pageTransition');
+            transition.classList.add('active');
+
+            // Get current and new page
+            const currentPageEl = document.getElementById(currentPage);
+            const newPageEl = document.getElementById(pageName);
+
+            // Add exit animation to current page
+            if (direction === 'right') {
+                currentPageEl.classList.add('slide-out-left');
+            } else {
+                currentPageEl.classList.add('slide-out-right');
+            }
+
+            // Wait for transition animation
+            setTimeout(() => {
+                // Hide all pages
+                const pages = document.querySelectorAll('.page-section');
+                pages.forEach(page => {
+                    page.classList.remove('active', 'slide-out-left', 'slide-out-right', 'slide-in-left', 'slide-in-right');
+                });
+
+                // Show new page with entrance animation
+                newPageEl.classList.add('active');
+                if (direction === 'right') {
+                    newPageEl.classList.add('slide-in-right');
+                } else {
+                    newPageEl.classList.add('slide-in-left');
+                }
+
+                // Update nav button active state
+                const navButtons = document.querySelectorAll('.nav-btn');
+                navButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+
+                // Find and activate the correct button
+                const buttons = document.querySelectorAll('.nav-btn');
+                buttons.forEach(btn => {
+                    // PERBAIKAN LOGIKA DISINI: Menyesuaikan textContent dengan HTML
+                    if (btn.textContent.toLowerCase().includes(pageName) ||
+                        (pageName === 'home' && btn.textContent === 'Home') ||
+                        (pageName === 'about' && btn.textContent === 'Tentang kelas') || // Perbaikan: "About Class" -> "Tentang kelas"
+                        (pageName === 'members' && btn.textContent === 'Member XII-2') ||
+                        (pageName === 'gallery' && btn.textContent === 'Galeri Foto') ||
+                        (pageName === 'video' && btn.textContent === 'Video') ||
+                        (pageName === 'drawing' && btn.textContent === 'Drawing')) {
+                        btn.classList.add('active');
+                    }
+                });
+
+                // Update current page
+                currentPage = pageName;
+
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Hide transition overlay
+                setTimeout(() => {
+                    transition.classList.remove('active');
+                }, 400);
+            }, 400);
+        }
+
+        // Parallax effect for decorative elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const stars = document.querySelectorAll('.deco-star');
+            stars.forEach((star, index) => {
+                if (star) {
+                    star.style.transform = `translateY(${scrolled * (0.1 + index * 0.05)}px)`;
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.info-card, .member-card, .photo-item, .stat-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Prevent body scroll during transition
+        const transitionEl = document.getElementById('pageTransition');
+        const transitionObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    if (transitionEl.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+        });
+
+        transitionObserver.observe(transitionEl, {
+            attributes: true
+        });
+
+        // Drawing canvas
+        (function initDrawing() {
+            const canvas = document.getElementById('drawCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false;
+            let lastX = 0, lastY = 0;
+            let currentColor = '#1a1a1a';
+            let currentSize = 4;
+            let currentSticker = null;
+            const STICKER_SIZE = 48;
+
+            function getPos(e) {
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvas.width / rect.width;
+                const scaleY = canvas.height / rect.height;
+                if (e.touches) {
+                    return {
+                        x: (e.touches[0].clientX - rect.left) * scaleX,
+                        y: (e.touches[0].clientY - rect.top) * scaleY
+                    };
+                }
+                return {
+                    x: (e.clientX - rect.left) * scaleX,
+                    y: (e.clientY - rect.top) * scaleY
+                };
+            }
+
+            function draw(x, y) {
+                ctx.strokeStyle = currentColor;
+                ctx.lineWidth = currentSize;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                lastX = x;
+                lastY = y;
+            }
+
+            function placeSticker(x, y) {
+                ctx.save();
+                ctx.font = STICKER_SIZE + 'px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillStyle = currentColor;
+                ctx.fillText(currentSticker, x, y);
+                ctx.restore();
+            }
+
+            function startDraw(e) {
+                e.preventDefault();
+                const pos = getPos(e);
+                if (currentSticker) {
+                    placeSticker(pos.x, pos.y);
+                    return;
+                }
+                isDrawing = true;
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function moveDraw(e) {
+                e.preventDefault();
+                if (!isDrawing) return;
+                const pos = getPos(e);
+                draw(pos.x, pos.y);
+            }
+
+            function endDraw(e) {
+                e.preventDefault();
+                isDrawing = false;
+            }
+
+            canvas.addEventListener('mousedown', startDraw);
+            canvas.addEventListener('mousemove', moveDraw);
+            canvas.addEventListener('mouseup', endDraw);
+            canvas.addEventListener('mouseleave', endDraw);
+            canvas.addEventListener('touchstart', startDraw, { passive: false });
+            canvas.addEventListener('touchmove', moveDraw, { passive: false });
+            canvas.addEventListener('touchend', endDraw, { passive: false });
+
+            document.querySelectorAll('#colorPalette .color-swatch').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    document.querySelectorAll('#colorPalette .color-swatch').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentColor = this.getAttribute('data-color');
+                });
+            });
+
+            const brushInput = document.getElementById('brushSize');
+            const brushValue = document.getElementById('brushSizeValue');
+            if (brushInput && brushValue) {
+                brushInput.addEventListener('input', function () {
+                    currentSize = parseInt(this.value, 10);
+                    brushValue.textContent = currentSize;
+                });
+            }
+
+            const brushModeBtn = document.getElementById('brushModeBtn');
+            document.querySelectorAll('.sticker-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    document.querySelectorAll('.sticker-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    if (brushModeBtn) brushModeBtn.classList.remove('active');
+                    currentSticker = this.getAttribute('data-sticker');
+                });
+            });
+            if (brushModeBtn) {
+                brushModeBtn.addEventListener('click', function () {
+                    currentSticker = null;
+                    document.querySelectorAll('.sticker-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            }
+
+            window.clearCanvas = function () {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            };
+        })();
+    </script>
+</body>
+
+</html>
